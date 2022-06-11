@@ -1,0 +1,22 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build-and-pub-oci-image
+  image: plugins/docker
+  settings:
+    context: .
+    dockerfile: Containerfile
+    tags: 
+      - latest
+      - ${DRONE_TAG}
+    repo: jjtc/v-rising-dedicated-server
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  
+trigger:
+  event:
+  - tag

@@ -1,0 +1,20 @@
+services:
+  v-rising-server:
+    container_name: v-rising-server
+    build:
+      context: .
+      dockerfile: Containerfile
+    image: docker.io/jjtc/v-rising-server
+    restart: unless-stopped
+    environment:
+      - "TZ=UTC"
+      - "SERVERNAME=JJTC World"
+      - "GAMESAVE=jjtc"
+      - "GAMEPORT=27015"
+      - "QUERYPORT=27016"
+    volumes:
+      - /srv/v-rising-server/:/home/steam/data/:rw
+      # - /srv/v-rising-server/server:/home/steam/server/:rw
+    ports:
+      - "27015:27015/udp"
+      - "27016:27016/udp"
