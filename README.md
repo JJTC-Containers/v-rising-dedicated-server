@@ -11,6 +11,8 @@ For details about V-Rising Dedicated server configuration see [Stunlock Studios'
 
 The game server assets will be pulled on every container startup, so to update the server simply restart the container.
 
+If the persistentDataPath (`/home/steam/data/`) directory is empty aka no game saves or settings provided, the `entrypoint.sh` script will copy the default files into `/home/steam/data/Settings` and the game will create a new game save.
+
 To start the image run one of the following commands:
 ### Podman
 `podman run -d --name v-rising-dedicated-server -v /srv/v-rising-server/:/home/steam/data/:rw -e TZ=UTC -e "SERVERNAME=JJTC World" -e GAMESAVE=jjtc -e GAMEPORT=27015 -e QUERYPORT=27016 -p 27015:27015/udp -p 27016:27016/udp docker.io/jjtc/v-rising-dedicated-server:latest`
@@ -38,7 +40,7 @@ A volume mapping can be added for `/home/steam/server/` if one wants the server 
 ## persistentDataPath clarification
 In the `compose.yml` example there is volume mapping from `/srv/v-rising-server/` on the host system to `/home/steam/data/` inside the container.
 
-Running `find .` at `/srv/v-rising-server/` will reveal the following:
+Running `find .` at `/srv/v-rising-server/` will reveal the following directory structure:
 ```shell
 ./v-rising-server/Saves/v1/jjtc/AutoSave_1
 ./v-rising-server/Saves/v1/jjtc/AutoSave_1/Header.save
