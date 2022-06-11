@@ -7,7 +7,7 @@ Based on JJTC's [steam-wine-xvfb](https://github.com/jjtc-containers/v-rising-de
 Comprised of Alpine Linux, DepotsDownloader (for getting Steam assets), Wine & Xvfb.
 
 ## Usage
-For details about V-Rising Dedicated server configuration see [Stunlock Studios' V-Rising Dedicated Server Instructions)](https://github.com/StunlockStudios/vrising-dedicated-server-instructions) repository.
+For details about V-Rising Dedicated server configuration see [Stunlock Studios' V-Rising Dedicated Server Instructions](https://github.com/StunlockStudios/vrising-dedicated-server-instructions) repository.
 
 The game server assets will be pulled on every container startup, so to update the server simply restart the container.
 
